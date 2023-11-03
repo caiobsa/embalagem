@@ -16,7 +16,6 @@ if 'historico' not in st.session_state:
     st.session_state.historico = []
 
 # Lista de embalagens padrão disponíveis no Brasil (exemplos)
-# Substitua estas dimensões pelas dimensões reais das embalagens que você tem
 embalagens_padrao = [
     (16, 11, 6),
     (18, 13, 9),
@@ -26,58 +25,40 @@ embalagens_padrao = [
 
 # Função para encontrar a embalagem adequada (substitua esta função pela sua função correta)
 def encontrar_embalagem(comprimento, largura, altura, peso):
-    # Esta é uma função de exemplo, substitua-a pela sua lógica de negócios
     for embalagem in embalagens_padrao:
         if embalagem[0] >= comprimento and embalagem[1] >= largura and embalagem[2] >= altura:
             return embalagem
     return None
 
-# Estilos personalizados
+# Estilos personalizados para campos de input quadrados
 st.markdown("""
 <style>
-.big-font {
-    font-size:30px !important;
-}
 input[type="number"] {
     -webkit-appearance: none;
     margin: 0;
-    width: 120px;
-    height: 120px;
-    font-size: 22px;
+    width: 120px !important;
+    height: 120px !important;
+    font-size: 22px !important;
     text-align: center;
 }
+div.row-widget.stNumberInput > div {flex-direction: column;}
 </style>
 """, unsafe_allow_html=True)
-
-# Sidebar (agora à direita)
-st.sidebar.title("Histórico de Cálculos")
-if st.session_state.historico:
-    historico_df = pd.DataFrame(st.session_state.historico)
-    st.sidebar.table(historico_df)
-
-# Botão para baixar o histórico em Excel
-if st.sidebar.button("Baixar histórico em Excel"):
-    df_excel = pd.DataFrame(st.session_state.historico)
-    excel_file = to_excel(df_excel)
-    st.sidebar.download_button(label="📥 Baixar Excel",
-                               data=excel_file,
-                               file_name='historico_embalagens.xlsx')
 
 # Layout principal
 st.title('Calculadora de Embalagens para E-commerce')
 
 with st.form(key='my_form'):
-    comprimento = st.number_input('Comprimento (cm)', min_value=0, format='%d')
-    largura = st.number_input('Largura (cm)', min_value=0, format='%d')
-    altura = st.number_input('Altura (cm)', min_value=0, format='%d')
-    peso = st.number_input('Peso (g)', min_value=0, format='%d')
+    comprimento = st.number_input('Comprimento (cm)', min_value=0, format='%d', key='comprimento')
+    largura = st.number_input('Largura (cm)', min_value=0, format='%d', key='largura')
+    altura = st.number_input('Altura (cm)', min_value=0, format='%d', key='altura')
+    peso = st.number_input('Peso (g)', min_value=0, format='%d', key='peso')
     submit_button = st.form_submit_button(label='Calcular embalagem ideal')
 
 if submit_button:
     embalagem = encontrar_embalagem(comprimento, largura, altura, peso)
     if embalagem:
         resultado = f'Use a embalagem: {embalagem[0]}x{embalagem[1]}x{embalagem[2]} cm'
-        st.markdown(f'<p class="big-font">{resultado}</p>', unsafe_allow_html=True)
         # Adiciona ao histórico no estado da sessão
         st.session_state.historico.append({
             "Comprimento": comprimento,
@@ -86,5 +67,20 @@ if submit_button:
             "Peso": peso,
             "Embalagem Sugerida": f'{embalagem[0]}x{embalagem[1]}x{embalagem[2]} cm'
         })
+        st.success(resultado)
     else:
-        st.markdown('<p class="big-font">Não foi possível encontrar uma embalagem padrão adequada.</p>', unsafe_allow_html=True)
+        st.error('Não foi possível encontrar uma embalagem padrão adequada.')
+
+# Barra lateral para histórico
+st.sidebar.title("Histórico de Cálculos")
+if st.session_state.historico:
+    historico_df = pd.DataFrame(st.session_state.historico)
+    st.sidebar.table(historico_df)
+
+    # Botão para baixar o histórico em Excel
+    if st.sidebar.button("Baixar histórico em Excel"):
+        df_excel = pd.DataFrame(st.session_state.historico)
+        excel_file = to_excel(df_excel)
+        st.sidebar.download_button(label="📥 Baixar Excel",
+                                   data=excel_file,
+                                   file_name='historico_embalagens.xlsx')
