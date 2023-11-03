@@ -78,7 +78,9 @@ if st.session_state['historico']:
 
 # Seção de definição de tamanhos de embalagem
 st.markdown("""
-## Definições de Tamanhos de Embalagens
+## Guia de Tamanhos de Embalagens para E-commerce
+
+Confira nosso guia de dimensões de embalagens especialmente projetado para negócios de e-commerce. Escolher o tamanho certo melhora a experiência do cliente e otimiza os custos de envio.
 
 | Tamanho | Comprimento (cm) | Largura (cm) | Altura (cm) |
 |---------|------------------|--------------|-------------|
@@ -89,35 +91,36 @@ st.markdown("""
 
 # Seção de instruções e exemplos de utilização de embalagens
 st.markdown("""
-## Instruções e Exemplos de Utilização de Embalagens
+## Melhores Práticas de Embalagem para E-commerce
 
-Ao escolher uma embalagem para o seu produto, considere não apenas as dimensões, mas também a segurança, apresentação e o impacto ambiental. 
+No mundo do e-commerce, a apresentação e segurança do produto são vitais. Além das dimensões, considere o impacto ambiental e a primeira impressão do cliente ao receber o pacote.
 
 ### Embalagem Pequena (P)
 
-Ideal para:
+Perfeita para e-commerces especializados em:
 
-- **Joias e Acessórios**: Coloque-os em pequenas bolsas protetoras e depois na embalagem. ![Imagem](LINK_DA_IMAGEM_DE_JOIAS)
-- **Cosméticos**: Embale produtos frágeis ou líquidos em plástico bolha. ![Imagem](LINK_DA_IMAGEM_DE_COSMETICOS)
-- **Brinquedos Pequenos**: Garanta que estão bem acondicionados para evitar danos. ![Imagem](LINK_DA_IMAGEM_DE_BRINQUEDOS)
+- **Joias e Acessórios**: Use pequenas bolsas protetoras antes de embalar. Ideal para lojas online de joias. ![Imagem](LINK_DA_IMAGEM_DE_JOIAS)
+- **Cosméticos**: Proteja produtos frágeis com plástico bolha. Essencial para boutiques de beleza online. ![Imagem](LINK_DA_IMAGEM_DE_COSMETICOS)
+- **Brinquedos Pequenos**: Embalagens seguras garantem a satisfação do cliente em lojas de brinquedos online. ![Imagem](LINK_DA_IMAGEM_DE_BRINQUEDOS)
 
 ### Embalagem Média (M)
 
-Ideal para:
+Recomendada para e-commerces de:
 
-- **Livros**: Envelopes acolchoados ou caixas para proteção extra. ![Imagem](LINK_DA_IMAGEM_DE_LIVROS)
-- **Eletrônicos**: Caixas com materiais de preenchimento para evitar movimentos. ![Imagem](LINK_DA_IMAGEM_DE_ELETRONICOS)
-- **Vestuário**: Sacolas plásticas ou envelopes flexíveis para roupas dobradas. ![Imagem](LINK_DA_IMAGEM_DE_VESTUARIO)
+- **Livros**: Lojas online de livros podem usar envelopes acolchoados para uma proteção extra. ![Imagem](LINK_DA_IMAGEM_DE_LIVROS)
+- **Eletrônicos**: Garanta a segurança de gadgets em sua loja virtual com materiais de preenchimento. ![Imagem](LINK_DA_IMAGEM_DE_ELETRONICOS)
+- **Vestuário**: Lojas de moda online devem optar por sacolas plásticas ou envelopes flexíveis. ![Imagem](LINK_DA_IMAGEM_DE_VESTUARIO)
 
 ### Embalagem Grande (G)
 
-Ideal para:
+Ideal para e-commerces de:
 
-- **Equipamento Esportivo**: Proteja com plástico bolha ou isopor. ![Imagem](LINK_DA_IMAGEM_DE_EQUIPAMENTO)
-- **Eletrodomésticos**: Use caixas resistentes e preencha espaços vazios. ![Imagem](LINK_DA_IMAGEM_DE_ELETRODOMESTICOS)
-- **Móveis Desmontados**: Certifique-se de que todas as peças estejam bem acondicionadas e protegidas. ![Imagem](LINK_DA_IMAGEM_DE_MOVEIS)
+- **Equipamento Esportivo**: Mantenha os equipamentos intactos com plástico bolha. Ótimo para lojas de esportes online. ![Imagem](LINK_DA_IMAGEM_DE_EQUIPAMENTO)
+- **Eletrodomésticos**: Para lojas de eletrodomésticos, use caixas resistentes e preencha espaços vazios. ![Imagem](LINK_DA_IMAGEM_DE_ELETRODOMESTICOS)
+- **Móveis Desmontados**: Lojas de móveis online devem garantir a proteção de todas as peças. ![Imagem](LINK_DA_IMAGEM_DE_MOVEIS)
 
-Lembre-se de verificar a política de embalagens do serviço de envio escolhido e adaptar suas embalagens de acordo.
+Para negócios de e-commerce, é vital verificar a política de embalagens do serviço de envio escolhido e adaptar as embalagens de acordo.
 """, unsafe_allow_html=True)
 
 # ... [Restante do código anterior permanece o mesmo]
+
