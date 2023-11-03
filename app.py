@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from io import BytesIO
 
 # Configurações de estilo - mantidas conforme seu código original
 st.markdown("""
@@ -19,15 +18,6 @@ input[type="number"] {
 div.row-widget.stNumberInput > div {flex-direction: column;}
 </style>
 """, unsafe_allow_html=True)
-
-# Função para gerar o arquivo Excel usando openpyxl
-def to_excel(df):
-    output = BytesIO()
-    with pd.ExcelWriter(output, engine='openpyxl') as writer:
-        df.to_excel(writer, index=False)
-        writer.save()
-    processed_data = output.getvalue()
-    return processed_data
 
 # Função para encontrar a embalagem adequada
 def encontrar_embalagem(comprimento, largura, altura, peso):
@@ -81,10 +71,10 @@ if st.session_state['historico']:
     historico_df = pd.DataFrame(st.session_state['historico'])
     st.sidebar.table(historico_df)
 
-    # Botão para baixar o histórico em Excel
-    if st.sidebar.button("Baixar histórico em Excel"):
-        df_excel = to_excel(historico_df)
-        st.sidebar.download_button(label="📥 Baixar Excel",
-                                   data=df_excel,
-                                   file_name='historico_embalagens.xlsx',
-                                   mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    # Botão para baixar o histórico em CSV
+    if st.sidebar.button("Baixar histórico em CSV"):
+        csv = historico_df.to_csv(index=False)
+        st.sidebar.download_button(label="📥 Baixar CSV",
+                                   data=csv,
+                                   file_name='historico_embalagens.csv',
+                                   mime='text/csv')
