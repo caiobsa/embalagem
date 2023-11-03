@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-# Configurações de estilo - mantidas conforme seu código original
+# Configurações de estilo - mantidas e aprimoradas conforme suas solicitações
 st.markdown("""
 <style>
 .big-font {
@@ -16,6 +16,7 @@ input[type="number"] {
     text-align: center;
 }
 div.row-widget.stNumberInput > div {flex-direction: column;}
+label {font-size: 18px !important;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -46,7 +47,7 @@ with st.form(key='dimensoes_form'):
     comprimento = st.number_input('Comprimento (cm)', min_value=0, format='%d')
     largura = st.number_input('Largura (cm)', min_value=0, format='%d')
     altura = st.number_input('Altura (cm)', min_value=0, format='%d')
-    peso = st.number_input('Peso (g)', min_value=0, format='%d')
+    peso = st.number_input('Peso (Gramas)', min_value=0, format='%d')
     submit_button = st.form_submit_button(label='Calcular embalagem ideal')
 
 if submit_button:
@@ -78,3 +79,24 @@ if st.session_state['historico']:
                                    data=csv,
                                    file_name='historico_embalagens.csv',
                                    mime='text/csv')
+
+# Seção com instruções e exemplos de utilização de embalagens
+st.markdown("""
+## Instruções e Exemplos de Utilização de Embalagens
+
+Ao escolher uma embalagem para o seu produto, é essencial considerar não apenas as dimensões do item, mas também a segurança e apresentação do produto. Aqui estão algumas dicas e exemplos:
+
+1. **Produtos Frágeis**: Opte por embalagens um pouco maiores e utilize materiais de preenchimento, como bolhas de ar ou papel amassado, para proteger o item.
+   
+2. **Produtos Leves e Pequenos**: Use envelopes acolchoados ou caixas de tamanhos menores para reduzir os custos de envio.
+
+3. **Produtos Grandes**: Selecione caixas de dimensões adequadas e certifique-se de que elas são resistentes o suficiente para suportar o peso do item.
+
+**Exemplos**:
+
+- **Livros**: Envelopes acolchoados ou caixas pequenas.
+- **Eletrônicos**: Caixas de tamanho médio com materiais de preenchimento para evitar movimentos indesejados.
+- **Vestuário**: Sacolas plásticas ou envelopes flexíveis.
+
+Lembre-se sempre de verificar a política de embalagens do serviço de envio escolhido e adaptar suas embalagens de acordo.
+""", unsafe_allow_html=True)
