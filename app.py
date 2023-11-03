@@ -74,23 +74,50 @@ if st.session_state['historico']:
                                    file_name='historico_embalagens.csv',
                                    mime='text/csv')
 
-# Seção com instruções e exemplos de utilização de embalagens
+# ... [Parte inicial do código anterior permanece a mesma]
+
+# Seção de definição de tamanhos de embalagem
+st.markdown("""
+## Definições de Tamanhos de Embalagens
+
+| Tamanho | Comprimento (cm) | Largura (cm) | Altura (cm) |
+|---------|------------------|--------------|-------------|
+| P       | 16               | 11           | 6           |
+| M       | 18               | 13           | 9           |
+| G       | 44               | 31           | 11          |
+""", unsafe_allow_html=True)
+
+# Seção de instruções e exemplos de utilização de embalagens
 st.markdown("""
 ## Instruções e Exemplos de Utilização de Embalagens
 
-Ao escolher uma embalagem para o seu produto, é essencial considerar não apenas as dimensões do item, mas também a segurança e apresentação do produto. Aqui estão algumas dicas e exemplos:
+Ao escolher uma embalagem para o seu produto, considere não apenas as dimensões, mas também a segurança, apresentação e o impacto ambiental. 
 
-1. **Produtos Frágeis**: Opte por embalagens um pouco maiores e utilize materiais de preenchimento, como bolhas de ar ou papel amassado, para proteger o item.
-   
-2. **Produtos Leves e Pequenos**: Use envelopes acolchoados ou caixas de tamanhos menores para reduzir os custos de envio.
+### Embalagem Pequena (P)
 
-3. **Produtos Grandes**: Selecione caixas de dimensões adequadas e certifique-se de que elas são resistentes o suficiente para suportar o peso do item.
+Ideal para:
 
-**Exemplos**:
+- **Joias e Acessórios**: Coloque-os em pequenas bolsas protetoras e depois na embalagem. ![Imagem](LINK_DA_IMAGEM_DE_JOIAS)
+- **Cosméticos**: Embale produtos frágeis ou líquidos em plástico bolha. ![Imagem](LINK_DA_IMAGEM_DE_COSMETICOS)
+- **Brinquedos Pequenos**: Garanta que estão bem acondicionados para evitar danos. ![Imagem](LINK_DA_IMAGEM_DE_BRINQUEDOS)
 
-- **Livros**: Envelopes acolchoados ou caixas pequenas.
-- **Eletrônicos**: Caixas de tamanho médio com materiais de preenchimento para evitar movimentos indesejados.
-- **Vestuário**: Sacolas plásticas ou envelopes flexíveis.
+### Embalagem Média (M)
 
-Lembre-se sempre de verificar a política de embalagens do serviço de envio escolhido e adaptar suas embalagens de acordo.
+Ideal para:
+
+- **Livros**: Envelopes acolchoados ou caixas para proteção extra. ![Imagem](LINK_DA_IMAGEM_DE_LIVROS)
+- **Eletrônicos**: Caixas com materiais de preenchimento para evitar movimentos. ![Imagem](LINK_DA_IMAGEM_DE_ELETRONICOS)
+- **Vestuário**: Sacolas plásticas ou envelopes flexíveis para roupas dobradas. ![Imagem](LINK_DA_IMAGEM_DE_VESTUARIO)
+
+### Embalagem Grande (G)
+
+Ideal para:
+
+- **Equipamento Esportivo**: Proteja com plástico bolha ou isopor. ![Imagem](LINK_DA_IMAGEM_DE_EQUIPAMENTO)
+- **Eletrodomésticos**: Use caixas resistentes e preencha espaços vazios. ![Imagem](LINK_DA_IMAGEM_DE_ELETRODOMESTICOS)
+- **Móveis Desmontados**: Certifique-se de que todas as peças estejam bem acondicionadas e protegidas. ![Imagem](LINK_DA_IMAGEM_DE_MOVEIS)
+
+Lembre-se de verificar a política de embalagens do serviço de envio escolhido e adaptar suas embalagens de acordo.
 """, unsafe_allow_html=True)
+
+# ... [Restante do código anterior permanece o mesmo]
