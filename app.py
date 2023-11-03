@@ -20,16 +20,16 @@ div.row-widget.stNumberInput > div {flex-direction: column;}
 </style>
 """, unsafe_allow_html=True)
 
-# Função para gerar o arquivo Excel
+# Função para gerar o arquivo Excel usando openpyxl
 def to_excel(df):
     output = BytesIO()
-    with pd.ExcelWriter(output) as writer:
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df.to_excel(writer, index=False)
         writer.save()
     processed_data = output.getvalue()
     return processed_data
 
-# Função para encontrar a embalagem adequada (deve substituir pela função correta)
+# Função para encontrar a embalagem adequada
 def encontrar_embalagem(comprimento, largura, altura, peso):
     # Substitua por sua lógica de encontro de embalagens
     for embalagem in embalagens:
@@ -39,11 +39,10 @@ def encontrar_embalagem(comprimento, largura, altura, peso):
 
 # Lista de embalagens padrão disponíveis no Brasil (exemplos)
 embalagens = [
-    # Adicione mais tamanhos conforme necessário
     (16, 11, 6),
     (18, 13, 9),
     (44, 31, 11),
-    # ...
+    # ... Adicione mais tamanhos conforme necessário
 ]
 
 # Inicializa o histórico no estado da sessão se ainda não estiver lá
@@ -66,7 +65,7 @@ if submit_button:
         resultado = f'Use a embalagem: {embalagem[0]}x{embalagem[1]}x{embalagem[2]} cm'
         st.markdown(f'<p class="big-font">{resultado}</p>', unsafe_allow_html=True)
         # Adiciona ao histórico no estado da sessão
-        st.session_state.historico.append({
+        st.session_state['historico'].append({
             "Comprimento": comprimento,
             "Largura": largura,
             "Altura": altura,
@@ -78,8 +77,8 @@ if submit_button:
 
 # Mostra o histórico na barra lateral
 st.sidebar.title("Histórico de Cálculos")
-if st.session_state.historico:
-    historico_df = pd.DataFrame(st.session_state.historico)
+if st.session_state['historico']:
+    historico_df = pd.DataFrame(st.session_state['historico'])
     st.sidebar.table(historico_df)
 
     # Botão para baixar o histórico em Excel
@@ -88,13 +87,4 @@ if st.session_state.historico:
         st.sidebar.download_button(label="📥 Baixar Excel",
                                    data=df_excel,
                                    file_name='historico_embalagens.xlsx',
-                                   mime='application/vnd.ms-excel')
-
-# Função para gerar o arquivo Excel sem usar o xlsxwriter explicitamente
-def to_excel(df):
-    output = BytesIO()
-    with pd.ExcelWriter(output) as writer:
-        df.to_excel(writer, index=False)
-        writer.save()
-    return output.getvalue()
-
+                                   mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
