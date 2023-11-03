@@ -23,9 +23,9 @@ div.row-widget.stNumberInput > div {flex-direction: column;}
 # Função para gerar o arquivo Excel
 def to_excel(df):
     output = BytesIO()
-    writer = pd.ExcelWriter(output, engine='xlsxwriter')
-    df.to_excel(writer, index=False)
-    writer.save()
+    with pd.ExcelWriter(output) as writer:
+        df.to_excel(writer, index=False)
+        writer.save()
     processed_data = output.getvalue()
     return processed_data
 
