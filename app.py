@@ -89,3 +89,12 @@ if st.session_state.historico:
                                    data=df_excel,
                                    file_name='historico_embalagens.xlsx',
                                    mime='application/vnd.ms-excel')
+
+# Função para gerar o arquivo Excel sem usar o xlsxwriter explicitamente
+def to_excel(df):
+    output = BytesIO()
+    with pd.ExcelWriter(output) as writer:
+        df.to_excel(writer, index=False)
+        writer.save()
+    return output.getvalue()
+
